@@ -1,0 +1,13 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    width: 100vw;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: calc(80px / 2);
+}

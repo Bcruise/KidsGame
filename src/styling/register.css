@@ -1,0 +1,36 @@
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    width: 100vw;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: calc(80px / 2);
+}
+
+.error {
+    color: red;
+}
+
+.avatar-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar-div img {
+    border-radius: 5px;
+    width: 10vw;
+    height: 10vw;
+    cursor: pointer;
+}
+
+.avatar-img-container {
+    height: 22vw;
+    width: 34vw;
+    display: flex;
+    justify-content: space-between;
+}
