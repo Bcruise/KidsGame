@@ -1,15 +1,18 @@
 .main-img-container {
-    height: calc(65vh - 80px);
+    height: 100%;
+    width: 50vw;
     display: flex;
     justify-content: center;
 }
 
 .main-img-container img {
-    height: calc(65vh - 80px);
+    height: 100%;
+    width: 50vw;
 }
 
 .guess-letter-container {
-    height: 15vh;
+    height: 100%;
+    width: 50vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -19,23 +22,74 @@
 .letter-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .letter-div {
     border: 1px solid black;
     border-radius: 5px;
-    width: 6vw;
-    height: 6vw;
+    width: 8vw;
+    height: 8vw;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 50px;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .guessed-word-container {
     height: 20vh;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.animal-name-letter-div {
+    border-bottom: 2px dotted black;
+    width: 8vw;
+    height: 8vw;
+    font-size: 60px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.animal-name-letter-div:nth-child(1) {
+    color: white;
+}
+
+.pic-and-guess-div {
+    display: flex;
+    flex-direction: row;
+    height: calc(80vh - 80px);
+}
+
+.tick-div {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn ease 3s;
+}
+
+.tick {    
+    font-size: 500px;
+    color: green;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
 }

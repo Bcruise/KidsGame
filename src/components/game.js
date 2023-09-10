@@ -2,6 +2,9 @@ import '../styling/game.css';
 import { useState } from 'react';
 import dog from '../images/beagle-hound-dog.webp';
 import animals from '../data/animals.json';
+import $ from 'jquery';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 function Game() {
 
@@ -26,6 +29,21 @@ function Game() {
     return shuffledLetters;
   };
   
+  const toArray = (animal) => {
+    return animal.split('');
+  };
+
+  const animalName = toArray(animals[animalObjectIndex].animal);
+
+  const [gameWon, setGameWon] = useState(false);
+
+  const isTheGuessCorrect = (guessedLetter) => {
+    if (guessedLetter === animals[animalObjectIndex].animal[0]) {
+      $(".animal-name-letter-div:nth-child(1)").css("color", "black");
+      setGameWon(true);
+    }
+  }
+
   const letterMaker = () => {
     const correctLetter = setLettersArray()[0];
     const lettersHolder = [correctLetter];
@@ -35,37 +53,41 @@ function Game() {
         lettersHolder.push(randomLetter);
       }
     }
-    return randomiseLetters(lettersHolder);
+    if (gameWon) {
+      return []
+    } else {
+      return randomiseLetters(lettersHolder);
+    }
   };
-
-  function toArray(animal) {
-    return animal.split('');
-  }
-
-  const animalName = toArray(animals[animalObjectIndex].animal);
-
+  
   return (
     <div className='game'>
-      <div className='main-img-container'>
-        <img src={dog}></img>
-      </div>
-      <div className='guess-letter-container'>
-        <div className='letter-container col-6'>
-            {letterMaker().map(letter => 
-                <div className='letter-div'>
-                    <span>{letter}</span>
-                </div>
-            )}
+      <div className='pic-and-guess-div'>
+        <div className='main-img-container'>
+          <img src={dog}></img>
+        </div>
+        <div className='guess-letter-container'>
+          <div className='letter-container col-7 row'>
+              {letterMaker().map(letter => 
+                  <div className='letter-div m-1' onClick={() => isTheGuessCorrect(letter)}>
+                      <span>{letter}</span>
+                  </div>
+              )}
+          </div>
         </div>
       </div>
       <div className='guessed-word-container'>
         {animalName.map(letter => (
-          <div className='animal-name-letter-div'>
+          <div className='animal-name-letter-div m-2'>
             <span>{letter}</span>
           </div>
         ))}
       </div>
-
+      {gameWon && (
+        <div className='tick-div'>
+          <FontAwesomeIcon icon={faCheck} className="tick" />
+        </div>
+      )}
     </div>
   );
 }
